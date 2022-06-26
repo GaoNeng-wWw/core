@@ -1,0 +1,22 @@
+{
+  "name": "@gachi/gachi-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": "index.js",
+  "bugs": "https://github.com/gachi-dev/gachi-cli/issues",
+  "keywords": [
+    "gachi",
+    "cli",
+    "gachi-cli"
+  ],
+  "author": "ga0neng",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^9.2.0",
+    "core": "^1.0.113",
+    "inquirer": "^8.2.4",
+    "ts-node": "^10.7.0",
+    "ts-node-register": "^1.0.0"
+  }
+}
