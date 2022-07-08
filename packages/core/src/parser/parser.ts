@@ -19,7 +19,6 @@ export function extract(this: Box): string[]{
             (val as Node)?.nodeValue || (val as any)?.data
         )
     });
-    console.log(arr);
     return arr || [];
 }
 export abstract class Parser{
