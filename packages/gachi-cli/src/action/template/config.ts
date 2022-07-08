@@ -7,3 +7,5 @@ const config:config = {
         Spider: Spider
     }
 }
+
+export {config};

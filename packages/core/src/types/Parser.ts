@@ -1,3 +1,4 @@
+import { SelectedValue } from "xpath";
 import { Box } from "./Box";
 
 export declare function extract(this: Box): SelectedValue[];

@@ -4,6 +4,4 @@ test_spider
 trush
 *-lock.*
 test
-**/core/data
-**/core/api
 **/dist

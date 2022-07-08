@@ -72,5 +72,5 @@
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
   },
   "include": ["./**/*","./index.ts"],
-  "exclude": ["api","data","node_modules", "__test__","example"],
+  "exclude": ["api","data","node_modules", "dist/__test__","example", "__test__"],
 }

@@ -1,8 +1,9 @@
 {
   "name": "gachi",
   "version": "0.0.8",
+  "types": "dist/index.d.ts",
   "author": "ga0neng",
-  "description": "A crawler framework written by nodejs.",
+  "description": "A crawler framework by nodejs.",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",

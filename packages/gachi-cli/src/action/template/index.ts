@@ -1,4 +1,4 @@
-import {spider,urls,engine,Box,customConfig} from 'gachi';
+import {spider,urls,engine,Box,customConfig,gachi} from 'gachi';
 export class Spider extends spider{
     constructor(){super()}
     public urls: urls = [];

@@ -1,8 +1,8 @@
-const { mkdirSync, statSync, realpathSync, copyFileSync, readdirSync} = require('fs');
+const { mkdirSync, statSync, realpathSync, copyFileSync, readdirSync, writeFileSync} = require('fs');
 const path = require('path');
 const {exec} = require('child_process');
 const inquirer = require('inquirer');
-
+const pack = require('./template/package.json')
 
 function initProject(arg){
     inquirer.prompt([
@@ -29,7 +29,9 @@ function initProject(arg){
         let fileList;
         fileList = [
             'index.ts',
-			'config.ts'
+			'config.ts',
+            'app.ts',
+            'tsconfig.json'
         ]
         let errorCount = 0;
         try {
@@ -37,6 +39,8 @@ function initProject(arg){
                 copyFileSync(`${__dirname}\\template\\${path_}`, `${path}\\${path_}`);
 				console.log(`${path}\\${path_}: Is Ok`);
             })
+            pack.name = res.name;
+            writeFileSync(`${path}\\package.json`, JSON.stringify(pack));
         } catch (e){
             console.error(`${e.message}`);
             errorCount++;
