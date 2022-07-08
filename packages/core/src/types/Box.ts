@@ -1,4 +1,6 @@
-export declare type Box = {
+import { SelectedValue } from "xpath";
+
+export type Box = {
     readyToReply?: boolean;
     isFail: boolean;
     _raw: any;
@@ -6,5 +8,5 @@ export declare type Box = {
     _hasDoc: boolean;
     _selectedValue?: Array<Node | Attr | string | number | boolean>;
     xpath?: (this: Box, selector: string) => Box;
-    extract?: extract
+    extract: (this: Box) => string[];
 }

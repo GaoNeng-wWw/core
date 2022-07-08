@@ -12,20 +12,20 @@ export function xpath(this: Box, selector: string): Box{
     return this;
 }
 type SelectedValue = Node | Attr | string | number | boolean;
-export function extract(this: Box): SelectedValue[]{
-    const arr: SelectedValue[] = [];
+export function extract(this: Box): string[]{
+    const arr: string[] = [];
     this._selectedValue?.forEach((val)=>{
         arr.push(
-            (val as Node)?.nodeValue || (val as any)?.data || val
+            (val as Node)?.nodeValue || (val as any)?.data
         )
     });
-    return arr;
+    return arr || [];
 }
-export abstract class BaseParser{
+export abstract class Parser{
     constructor(){}
-    abstract transformer(data: Record<string,any>): Box;
+    abstract transformer(data: Record<string,any>): Box | any;
 }
-export class Parser implements BaseParser{
+export class Parse implements Parser{
     constructor(){}
     transformer(data: Record<string,any>): Box{
         return box(data['data'], data['isFail']);

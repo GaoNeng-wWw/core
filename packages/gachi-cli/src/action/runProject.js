@@ -1,39 +1,28 @@
+const ts = require('typescript');
 const { exec } = require("child_process");
-const { readdirSync, realpathSync } = require("fs");
+const { readdirSync, realpathSync, readFileSync, fstat, writeFileSync } = require("fs");
+const { Script } = require('vm');
 function runProject(relativePath){
     //
     let path = realpathSync(relativePath);
     const runArgs = ``;
+    let command = ``
     const dir = readdirSync(path);
-    if (dir.includes('index.ts')){
-        exec(`ts-node ${path}\\index.ts`, (err,stdout,stderr)=>{
+    if (dir.includes('config.ts')){
+        exec(`ts-node `, (err,stdout,stderr)=>{
             if (err || stderr){
-                console.log(err || stderr)
+                console.log(err || stderr);
             }
-            if (stdout){
-                console.log(stdout);
-            }
+            console.log(stdout)
         })
+        // writeFileSync(`${path}\\config.js`, code);
+
+        // let ctx = new Script(code);
+        // ctx.runInNewContext()
+        // const data = ctx.cachedData;
+        // console.log(data.toString())
     } else {
-        //
-        const command = `
-            "import('gachi').then((module)=>{
-                const {gachi} = module;
-                new gachi()
-            })"
-        `
-        exec(
-        `
-            ts-node -e "import('${__dirname.replace(/\\/gim,'/')}/lib/run').then((module)=>{module.default('${arg}')})"
-        `
-        ,(err,out,stderr)=>{
-            if (err || stderr){
-                console.error(err || stderr)
-            }
-            if(stdout){
-                console.log(stdout);
-            }
-        })
+        console.warn('not find any Config File');
     }
 }
 

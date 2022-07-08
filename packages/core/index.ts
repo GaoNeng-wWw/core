@@ -8,19 +8,20 @@ import { pipe } from './src/types/Pipe';
 import { Requestmethod, RequestOption } from './src/types/Request';
 import { Response } from './src/types/Response';
 // import { urls, spider } from './src/types/spider';
-import { urls, spider } from './src/types/spider';
+import { Spider } from './src/spider/spider';
+import { urls } from './src/types/spider';
+import { Parse,Parser } from './src/parser/parser';
 
-export { Box, customConfig, config, engine, Option, pipe, Requestmethod, RequestOption,Response, urls, spider as Spider };
+export { Parse,Parser,Box, customConfig, config, engine, Option, pipe, Requestmethod, RequestOption,Response, urls };
 
 
-import { BaseScheduler } from './src/spider/spider';
 /** utils */
 import { box } from './src/Box/box';
 import { option, optionFactory, isOption } from './src/utils/Option';
 import GraphQLlite from './src/utils/GraphqlLite';
 import { gachi } from './src/gachi';
 export {
-    BaseScheduler as spider,
+    Spider as spider,
     box as toBox,
     option,
     optionFactory,
