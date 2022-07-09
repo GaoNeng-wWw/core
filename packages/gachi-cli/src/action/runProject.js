@@ -1,19 +1,19 @@
-const ts = require('typescript');
 const { exec } = require("child_process");
 const { readdirSync, realpathSync, readFileSync, fstat, writeFileSync } = require("fs");
-const { Script } = require('vm');
+
 function runProject(relativePath){
     //
     let path = realpathSync(relativePath);
     const runArgs = ``;
     let command = ``
-    const dir = readdirSync(path);
+    let dir = readdirSync(path);
     if (dir.includes('config.ts')){
-        exec(`ts-node `, (err,stdout,stderr)=>{
-            if (err || stderr){
-                console.log(err || stderr);
-            }
-            console.log(stdout)
+        exec('tsc', ()=>{
+            exec(`node ${relativePath}/dist/app.js`, (err, stdout, stderr)=>{
+                if (err)    {console.log(err)}
+                if (stdout) {console.log(stdout)}
+                if (stderr) {console.log(stderr)}
+            })
         })
         // writeFileSync(`${path}\\config.js`, code);
 

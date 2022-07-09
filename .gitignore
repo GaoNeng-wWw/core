@@ -5,3 +5,5 @@ trush
 *-lock.*
 test
 **/dist
+*.log
+t1

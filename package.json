@@ -7,5 +7,11 @@
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "build:core": "cd .\\packages\\core\\&&pnpm build",
+    "build:core:api": "cd .\\packages\\core\\&&pnpm build:api",
+    "prepublish": "pkgfiles .\\packages\\core",
+    "link": "cd .\\packages\\core\\&&pnpm link ."
+  }
 }
