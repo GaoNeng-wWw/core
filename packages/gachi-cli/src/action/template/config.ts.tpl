@@ -1,10 +1,10 @@
-import {config} from 'gachi';
-import { Spider } from '.';
+import { config } from 'gachi';
+import { {{name}} } from '.';
 const config:config = {
     name: 'Test',
     custom: {},
     program: {
-        Spider: Spider
+        Spider: {{name}}
     }
 }
 
