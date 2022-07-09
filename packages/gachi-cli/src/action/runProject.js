@@ -15,12 +15,6 @@ function runProject(relativePath){
                 if (stderr) {console.log(stderr)}
             })
         })
-        // writeFileSync(`${path}\\config.js`, code);
-
-        // let ctx = new Script(code);
-        // ctx.runInNewContext()
-        // const data = ctx.cachedData;
-        // console.log(data.toString())
     } else {
         console.warn('not find any Config File');
     }
