@@ -8,3 +8,5 @@
 2. gachi-cli init [projetName]
 3. cd projectName
 4. pnpm install (npm install 亦可)
+5. coding....
+6. gachi-cli run [projectName]
