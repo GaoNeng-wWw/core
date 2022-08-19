@@ -44,55 +44,7 @@ function initProject(arg){
                     console.log(`[${new Date().getDate()}][gachi-cli][info]: ${e.message}`);
                 }
             })
-            // inputFileList.forEach((path)=>{
-            //     let template = Handlebars.compile(
-            //         readFileSync(path).toString()
-            //     )(
-            //         {
-            //             gachi_version: version,
-            //             ...answer
-            //         }
-            //     )
-            //     console.log(path);
-            // })
         })
-        // let crawlerName = res.name === '.' ? '' : res.name;
-        // let path = realpathSync('.') + '\\' + crawlerName;
-        // let stat;
-        // try {
-        //     stat = statSync(`${path}`);
-        //     const fileList = readdirSync(`${path}`);
-        //     if (stat.isDirectory() && fileList.length){
-        //         console.error(`${res.name} is already will overwrite this fold`);
-        //     }
-        // } catch (e){
-        //     mkdirSync(path);
-        //     stat = statSync(`${path}`);
-        // }
-        // let fileList;
-        // fileList = [
-        //     'index.ts.tpl',
-		// 	'config.ts.tpl',
-        //     'app.ts.tpl',
-        //     'tsconfig.json.tpl',
-        //     'package.json.tpl'
-        // ]
-        // let errorCount = 0;
-        // try {
-        //     fileList.forEach((path_)=>{
-        //         copyFileSync(`${__dirname}\\template\\${path_}`, `${path}\\${path_}`);
-		// 		console.log(`${path}\\${path_}: Is Ok`);
-        //     })
-        //     pack.name = res.name;
-        //     writeFileSync(`${path}\\package.json`, JSON.stringify(pack));
-        // } catch (e){
-        //     console.error(`${e.message}`);
-        //     errorCount++;
-        //     return errorCount
-        // }
-        // console.log(`
-        //     ${errorCount === 0 ? 'Not Error' : `Have ${errorCount} error${errorCount < 1 ? 's' : ''}`}
-        // `)
     })
 }
 module.exports = {

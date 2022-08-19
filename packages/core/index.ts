@@ -7,7 +7,6 @@ import { Option } from './src/types/Option';
 import { pipe } from './src/types/Pipe';
 import { Requestmethod, RequestOption } from './src/types/Request';
 import { Response } from './src/types/Response';
-// import { urls, spider } from './src/types/spider';
 import { Spider } from './src/spider/spider';
 import { urls } from './src/types/spider';
 import { Parse,Parser } from './src/parser/parser';

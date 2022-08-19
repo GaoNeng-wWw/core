@@ -1,5 +1,5 @@
 import { Box, customConfig, engine, gachi, spider, toBox, urls } from "../dist/"
-import {BaseParser} from '../dist/src/parser/parser';
+import { Parser as BaseParser} from '../dist/src/parser/parser';
 
 describe('box', ()=>{
     const html = `<h1>HelloWorld</h1>`

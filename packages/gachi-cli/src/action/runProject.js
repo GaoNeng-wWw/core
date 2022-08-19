@@ -2,7 +2,6 @@ const { exec } = require("child_process");
 const { readdirSync, realpathSync, readFileSync, fstat, writeFileSync } = require("fs");
 
 function runProject(relativePath){
-    //
     let path = realpathSync(relativePath);
     const runArgs = ``;
     let command = ``
@@ -15,12 +14,6 @@ function runProject(relativePath){
                 if (stderr) {console.log(stderr)}
             })
         })
-        // writeFileSync(`${path}\\config.js`, code);
-
-        // let ctx = new Script(code);
-        // ctx.runInNewContext()
-        // const data = ctx.cachedData;
-        // console.log(data.toString())
     } else {
         console.warn('not find any Config File');
     }

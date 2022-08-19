@@ -9,4 +9,5 @@ export type Box = {
     _selectedValue?: Array<Node | Attr | string | number | boolean>;
     xpath?: (this: Box, selector: string) => Box;
     extract: (this: Box) => string[];
+    [x:string]: any
 }

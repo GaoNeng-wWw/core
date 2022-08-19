@@ -1,10 +1,10 @@
 {
-  "name": "@gachi/gachi-cli",
+  "name": "gachi-cli",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "bin": "index.js",
-  "bugs": "https://github.com/gachi-dev/gachi-cli/issues",
+  "bugs": "https://github.com/gachi-dev/core/issues",
   "keywords": [
     "gachi",
     "cli",
