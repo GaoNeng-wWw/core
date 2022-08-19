@@ -2,7 +2,6 @@ const { exec } = require("child_process");
 const { readdirSync, realpathSync, readFileSync, fstat, writeFileSync } = require("fs");
 
 function runProject(relativePath){
-    //
     let path = realpathSync(relativePath);
     const runArgs = ``;
     let command = ``
