@@ -1,7 +1,7 @@
 import { config } from 'gachi';
 import { {{name}} } from '.';
 const config:config = {
-    name: 'Test',
+    name: '{{name}}',
     custom: {},
     program: {
         Spider: {{name}}
