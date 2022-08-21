@@ -1,11 +1,11 @@
-import { RequestOption, Requestmethod, RequestOptionItem } from '../types/Request';
+import { Requestmethod, RequestOptionItem } from '../types/Request';
 import { urls } from '../types/spider';
 
 function prcessParam(val: RequestOptionItem & URL,param: Record<string, unknown>){
 	if (val.method === 'GET'){
-		Object.entries(param).forEach((v,i)=>{
-			val.searchParams.set(v[0],String(v[1]));
-		})
+		Object.entries(param).forEach((param)=>{
+			val.searchParams.set(param[0],String(param[1]));
+		});
 	}
 	return val;
 }
@@ -22,18 +22,18 @@ export function option(url: string, method: Requestmethod, param: Record<string,
 }
 export function url2Option(url: urls){
 	let requestOption: optionFactory;
-    let [Request_url,Request_method,Request_param] = ['', 'GET' as Requestmethod, {}];
-    if (url instanceof Array){
-        Request_url = (url as string[])?.[0];
-        Request_method = (url as string[])?.[1] as Requestmethod;
-        Request_param = (url as string[])?.[2];
-        requestOption = new optionFactory(Request_url,Request_method,Request_param);
-    } else if (typeof url === 'string'){
-        requestOption = new optionFactory(url, 'GET', {});
-    } else {
-        requestOption = url;
-    }
-    return requestOption;
+	let [Request_url,Request_method,Request_param] = ['', 'GET' as Requestmethod, {}];
+	if (url instanceof Array){
+		Request_url = (url as string[])?.[0];
+		Request_method = (url as string[])?.[1] as Requestmethod;
+		Request_param = (url as string[])?.[2];
+		requestOption = new optionFactory(Request_url,Request_method,Request_param);
+	} else if (typeof url === 'string'){
+		requestOption = new optionFactory(url, 'GET', {});
+	} else {
+		requestOption = url;
+	}
+	return requestOption;
 }
 export class optionFactory{
 	public isOption = true;

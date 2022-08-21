@@ -10,7 +10,6 @@ export interface RequestOption{
 export interface RequestOptionItem extends ClientRequestArgs {
 	param?: Record<string,unknown>;
 	method?: Requestmethod,
-	[x:string]: any
 }
 
 export interface requestMiddleware{

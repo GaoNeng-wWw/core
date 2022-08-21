@@ -1,4 +1,4 @@
-import { Requestmethod } from "../src/types/Request";
+import { Requestmethod } from '../src/types/Request';
 export interface UserCardParam extends Record<string, unknown> {
 	mid?: string;
 	photo?: true | false;

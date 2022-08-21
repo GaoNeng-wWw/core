@@ -1,19 +1,14 @@
-import { ClientRequest, request as req_http } from 'http';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { request as req_http } from 'http';
 import { request as req_https } from 'https';
 import { stringify } from 'querystring';
-import { requestMiddleware, RequestOption } from '../types/Request';
-import {box} from '../Box/box';
-import { Box } from '../types/Box';
-
-let m:requestMiddleware = {};
-
-export function setMid(mid: requestMiddleware){m=mid;}
+import { RequestOption } from '../types/Request';
 
 export async function http(option: RequestOption): Promise<Record<string, any>>{
 	return new Promise((resolve,reject)=>{
 		let d = '';
 		const req = req_http(option.value, (res)=>{
-			let isFail = res.statusMessage !== 'OK'
+			const isFail = res.statusMessage !== 'OK';
 			res.on('data', (chunk:any)=>{
 				d+=chunk.toString();
 			});

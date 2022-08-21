@@ -1,4 +1,4 @@
-import { RequestOptionItem } from "./Request";
+import { RequestOptionItem } from './Request';
 
 export declare class optionFactory {
 	public isOption: boolean;

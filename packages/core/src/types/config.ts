@@ -1,7 +1,7 @@
-import { Spider } from "./spider";
-import { pipe } from "./Pipe";
-import { optionFactory } from "./Option";
-import { BaseParser } from "./Parser";
+import { Spider } from './spider';
+import { pipe } from './Pipe';
+import { optionFactory } from './Option';
+import { BaseParser } from './Parser';
 export declare interface config{
     name: string;
     program: {
@@ -14,5 +14,6 @@ export declare interface config{
 }
 
 export declare interface customConfig {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [x:string]: any;
 }

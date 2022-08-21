@@ -12,19 +12,19 @@ import { urls, spiderRunParam } from './src/types/spider';
 import { Parse, BaseParser } from './src/parser/parser';
 
 export {
-    Parse,
-    BaseParser,
-    Box,
-    customConfig,
-    config,
-    engine,
-    Option,
-    pipe,
-    Requestmethod,
-    RequestOption,
-    Response,
-    urls,
-    spiderRunParam
+	Parse,
+	BaseParser,
+	Box,
+	customConfig,
+	config,
+	engine,
+	Option,
+	pipe,
+	Requestmethod,
+	RequestOption,
+	Response,
+	urls,
+	spiderRunParam
 };
 
 /** utils */
@@ -33,11 +33,11 @@ import { option, optionFactory, isOption } from './src/utils/Option';
 import GraphQLlite from './src/utils/GraphqlLite';
 import { gachi } from './src/gachi';
 export {
-    Spider as spider,
-    box as toBox,
-    option,
-    optionFactory,
-    isOption,
-    GraphQLlite,
-    gachi,
-}
+	Spider as spider,
+	box as toBox,
+	option,
+	optionFactory,
+	isOption,
+	GraphQLlite,
+	gachi,
+};

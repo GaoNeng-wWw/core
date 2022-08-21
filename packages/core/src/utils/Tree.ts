@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type Node_Type = Node_;
 export class Node_{
 	public data:any;
@@ -20,7 +21,12 @@ export default class tree {
 			this.head?.children.push(node);
 			return;
 		} else {
-			const stack = [...this.head?.children] as Node_[];
+			let stack = [];
+			if (this.head?.children){
+				stack = [...this.head.children] as Node_[];
+			} else {
+				return;
+			}
 			let prevIdx = null;
 			while (stack?.length){
 				const shiftItem = stack.shift();
