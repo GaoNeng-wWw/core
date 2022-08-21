@@ -1,6 +1,6 @@
 import { customConfig } from '../types/config';
 import {Response} from '../types/Response';
-import { urls } from '../types/spider';
+import { spiderRunParam, urls } from '../types/spider';
 import { engine } from '../types/gachi';
 export class Spider{
     constructor(){}
@@ -8,6 +8,6 @@ export class Spider{
     public urls: urls = [];
     public delay?: number;
     public open(config: customConfig,...args:[]){}
-    public run(this: Spider, engine: engine,res: Response, config: customConfig){}
+    public run({ engine, res, config }: spiderRunParam){}
     public shutdown(config: customConfig,...args:[]){}
 }

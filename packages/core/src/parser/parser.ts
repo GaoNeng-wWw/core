@@ -21,12 +21,10 @@ export function extract(this: Box): string[]{
     });
     return arr || [];
 }
-export abstract class Parser{
-    constructor(){}
+export abstract class BaseParser{
     abstract transformer(data: Record<string,any>): Box | any;
 }
-export class Parse implements Parser{
-    constructor(){}
+export class Parse implements BaseParser{
     transformer(data: Record<string,any>): Box{
         return box(data['data'], data['isFail']);
     }

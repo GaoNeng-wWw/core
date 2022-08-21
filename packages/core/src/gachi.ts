@@ -2,7 +2,7 @@ import {existsSync, readFileSync} from 'fs';
 import {join, resolve} from 'path';
 import { config, customConfig } from './types/config';
 import { Requestmethod, RequestOption } from './types/Request';
-import { optionFactory } from './utils/Option';
+import { optionFactory, url2Option } from './utils/Option';
 import {http, https} from './utils/RequestUtil';
 import { Spider, urls } from './types/spider';
 import { pipe } from './types/Pipe';
@@ -52,7 +52,6 @@ export class gachi{
         this.pipelines = this.config.program.pipline || [];
         this.engineFunction['request'] = this.request.bind(this);
         this.engineFunction['pipelines'] = this.pipelines;
-        // this.parser = new (this.config.program.Parser || Parser)()
         if (this.config.program.Parser){this.parser = new this.config.program.Parser()}
         else{this.parser=new Parse()}
     }
@@ -88,7 +87,7 @@ export class gachi{
         if (typeof urls !== 'string'){
             for (let i=0;i<urls.length;i++){
                 const url:string[] | urls = urls[i] as string[] | urls;
-                let requestOption = this.toOption(url as string[] | urls);
+                let requestOption = url2Option(url as string[] | urls);
                 urls[i] = requestOption;
                 if (requestOption.value?.protocol){
                     if (this.config.program.middleware?.length){
@@ -101,7 +100,11 @@ export class gachi{
                         response.readyToReply = true;
                         (this.failUrls as optionFactory[]).push(requestOption);
                     }
-                    let result = await this.spider.run(this.engineFunction, response, this.config.custom || {}) as unknown as Box;
+                    let result = await this.spider.run({
+                        engine: this.engineFunction,
+                        res: response,
+                        config: this.config.custom || {}
+                    }) as unknown as Box;
                     if (this.pipelines?.length){
                         this.pipelines?.forEach((pipline)=>{
                             result = pipline.apply(this.spider, [result, this.spider.urls])
@@ -113,20 +116,5 @@ export class gachi{
                 await sleep(this.spider.delay || 1000);
             }
         }
-    }
-    private toOption(url: urls){
-        let requestOption: optionFactory;
-        let [Request_url,Request_method,Request_param] = ['', 'GET' as Requestmethod, {}];
-        if (url instanceof Array){
-            Request_url = (url as string[])?.[0];
-            Request_method = (url as string[])?.[1] as Requestmethod;
-            Request_param = (url as string[])?.[2];
-            requestOption = new optionFactory(Request_url,Request_method,Request_param);
-        } else if (typeof url === 'string'){
-            requestOption = new optionFactory(url, 'GET', {});
-        } else {
-            requestOption = url;
-        }
-        return requestOption;
     }
 }

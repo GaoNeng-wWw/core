@@ -1,4 +1,5 @@
 import { RequestOption, Requestmethod, RequestOptionItem } from '../types/Request';
+import { urls } from '../types/spider';
 
 function prcessParam(val: RequestOptionItem & URL,param: Record<string, unknown>){
 	if (val.method === 'GET'){
@@ -19,7 +20,21 @@ export function isOption(likeOption: unknown): boolean{
 export function option(url: string, method: Requestmethod, param: Record<string,unknown>, args?:Record<string,unknown>): optionFactory{
 	return new optionFactory(url, method, param, args);
 }
-
+export function url2Option(url: urls){
+	let requestOption: optionFactory;
+    let [Request_url,Request_method,Request_param] = ['', 'GET' as Requestmethod, {}];
+    if (url instanceof Array){
+        Request_url = (url as string[])?.[0];
+        Request_method = (url as string[])?.[1] as Requestmethod;
+        Request_param = (url as string[])?.[2];
+        requestOption = new optionFactory(Request_url,Request_method,Request_param);
+    } else if (typeof url === 'string'){
+        requestOption = new optionFactory(url, 'GET', {});
+    } else {
+        requestOption = url;
+    }
+    return requestOption;
+}
 export class optionFactory{
 	public isOption = true;
 	public value: RequestOptionItem & URL;

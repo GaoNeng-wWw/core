@@ -1,5 +1,4 @@
-import { Box, customConfig, engine, gachi, spider, toBox, urls } from "../dist/"
-import { Parser as BaseParser} from '../dist/src/parser/parser';
+import { Box, gachi, spider, spiderRunParam, toBox, urls, BaseParser } from "../dist/"
 
 describe('box', ()=>{
     const html = `<h1>HelloWorld</h1>`
@@ -21,9 +20,8 @@ describe('box', ()=>{
             };
         }
         class emptySpider extends spider{
-            constructor(){super()}
             public urls: urls = [['https://gaoneng-www.github.io/', 'GET', {}]]
-            run(this: spider, engine: engine, res: Box, config: customConfig): void {
+            run({res}: spiderRunParam): void {
                 expect(res.isExtraBox).toBe(true);
             }
         }

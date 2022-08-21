@@ -8,11 +8,24 @@ import { pipe } from './src/types/Pipe';
 import { Requestmethod, RequestOption } from './src/types/Request';
 import { Response } from './src/types/Response';
 import { Spider } from './src/spider/spider';
-import { urls } from './src/types/spider';
-import { Parse,Parser } from './src/parser/parser';
+import { urls, spiderRunParam } from './src/types/spider';
+import { Parse, BaseParser } from './src/parser/parser';
 
-export { Parse,Parser,Box, customConfig, config, engine, Option, pipe, Requestmethod, RequestOption,Response, urls };
-
+export {
+    Parse,
+    BaseParser,
+    Box,
+    customConfig,
+    config,
+    engine,
+    Option,
+    pipe,
+    Requestmethod,
+    RequestOption,
+    Response,
+    urls,
+    spiderRunParam
+};
 
 /** utils */
 import { box } from './src/Box/box';
@@ -26,5 +39,5 @@ export {
     optionFactory,
     isOption,
     GraphQLlite,
-    gachi
+    gachi,
 }

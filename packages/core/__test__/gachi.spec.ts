@@ -1,4 +1,4 @@
-import {spider,gachi, Box, customConfig, urls, RequestOption, engine} from '../dist';
+import {spider,gachi, Box, customConfig, urls, RequestOption, spiderRunParam} from '../dist';
 
 function notHasReturnValueTestFunction(){
     return true;
@@ -9,13 +9,7 @@ describe('gachi', ()=>{
             constructor(){
                 super();
             }
-            public open(): void {
-                expect(notHasReturnValueTestFunction()).toBe(true)
-            }
-            public shutdown(): void {
-                expect(notHasReturnValueTestFunction()).toBe(true)
-            }
-            public run(this: spider, engine: engine, res: Box, config: customConfig): Box {
+            public run({res}: spiderRunParam): Box {
                 return res;
             }
         }
@@ -29,11 +23,8 @@ describe('gachi', ()=>{
     })
     it('spider', async ()=>{
         class Spider extends spider{
-            constructor(){
-                super();
-            }
             public urls: urls = [['https://gaoneng-www.github.io/', 'GET', {}]]
-            public async run(this: spider,engine: engine, res: Box, config: customConfig) {
+            public async run({res}: spiderRunParam) {
                 let img = res?.xpath?.('/html/body/div/div[4]/div[1]/img/@src');
                 expect(img?.extract?.()[0]).toBe('/img/author_avatar.jpg');
             }
@@ -53,13 +44,14 @@ describe('gachi', ()=>{
             expect(opt.value['isChange']).toBe(true)
         }
         class Spider extends spider{
-            constructor(){
-                super();
+            open(config: customConfig): void {
+                console.log('is open');
             }
-            public urls: urls = [['https://gaoneng-www.github.io/', 'GET', {}]]
-            public async run(this: spider, engine: engine, res: Box, config: customConfig) {
-                let img = res?.xpath?.('/html/body/div/div[4]/div[1]/img/@src').extract?.();
-                expect(img?.[0]).toBe('/img/author_avatar.jpg');
+            run({ engine, res, config }: spiderRunParam): void {
+
+            }
+            shutdown(config: customConfig): void {
+                console.log('is shutdown');
             }
         }
         let instance = new gachi({

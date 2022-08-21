@@ -9,8 +9,8 @@
       "docModel": {
       "enabled": false
     },
-      "dtsRollup": {
-        "enabled": true,
-        "untrimmedFilePath": "./dist/index.d.ts"
-      }
+    "dtsRollup": {
+      "enabled": true,
+      "untrimmedFilePath": "./dist/index.d.ts"
+    }
 }

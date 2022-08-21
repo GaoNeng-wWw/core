@@ -1,8 +1,5 @@
 import { writeFileSync } from "fs";
-import { exit } from "process";
-import { Box, customConfig, engine, optionFactory, spider,gachi } from "../dist";
-import { userInfo } from "../api/user";
-import { videoList } from "../api/video";
+import { Box, customConfig, optionFactory, spider,gachi, spiderRunParam } from "../dist";
 import { urls } from "../src/types/spider";
 
 describe('pipe', ()=>{
@@ -32,12 +29,12 @@ describe('pipe', ()=>{
             public open(config: customConfig): void {}
             public xpath = `//*[@id="list"]/dl/dd[position()>=10]/a/@href`;
             public content = `//*[@id="content"]//text()`
-            public async run(this: Spider, engine: engine, res: Box, config: customConfig): Promise<void> {
+            public async run({ engine, res, config }: spiderRunParam): Promise<void> {
                 const list = res?.xpath?.(this.xpath)?.extract() as string[];
                 for (let i=0;i<list.length;i++){
                     if (i === 2){
-                        done(true);
-                        return;
+                        done();
+                        return 
                     }
                     const l = list?.[i];
                     const option = new optionFactory(`${this.baseUrl}${l}`, 'GET', {});

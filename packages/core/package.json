@@ -8,7 +8,7 @@
   "scripts": {
     "test": "jest",
     "test::coverage": "jest --coverage",
-    "build": "tsc&&copy package.json ..\\gachi&&copy tsconfig.json ..\\gachi",
+    "build": "node scripts/build.js",
     "build:api": "api-extractor run"
   },
   "keywords": [
@@ -19,9 +19,11 @@
   ],
   "license": "ISC",
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.29.3",
     "@types/jest": "^28.1.1",
     "@types/lodash": "^4.14.182",
     "@types/xmldom": "^0.1.31",
+    "glob": "^8.0.3",
     "jest": "^28.1.1",
     "reflect-metadata": "^0.1.13",
     "ts-jest": "^28.0.5",
